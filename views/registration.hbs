@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/registration.css" />
+   
+    <title>Registration</title>
+</head>
+<body>
+    <div class="container">
+        <form id="form"  action="/auth/registration" onsubmit="return demo()" method="post">
+            <h1>BOOK NOW</h1>
+            <div class="input-control">
+                <label>Name</label>
+                <input id="uname" name="uname" placeholder="Enter name" type="text"  onkeyup="validatename()">
+                  <small id="small1"></small><br>
+            </div>
+            <div class="input-control">
+                <label for="email">Email</label>
+                <input id="email" name="email" placeholder="Enter email" type="text"  onkeyup="validateemail()" >
+                <small id="small"></small><br>
+            </div>
+            <div class="input-control">
+                <label for="phno">Phone.no</label>
+                <input id="phno"name="phno" placeholder="Enter Phone number" type="tel" onkeyup="validatephoneno()">
+                <small id="small2"></small><br>
+            </div>
+            <div class="input-control">
+                <label for="age">Date of Birth</label>
+                <input id="age"name="age" type="date" required><br>
+            </div>
+           
+            <div class="input-control">
+                <label for="weight">Weight(in Kilograms)</label>
+                <input id="weight"name="weight" placeholder="Enter weight" type="text" onkeyup="validateweight()">
+                 <small id="small3"></small><br>
+            </div>
+            <div class="input-control">
+                <label for="height">Height(in Centimeter)</label>
+                <input id="height"name="height" placeholder="Enter height" type="text" onkeyup="validateheight()">
+                <small id="small4"></small>
+            </div>
+            <label for="gender">GENDER</label><br>
+            <input type="radio"  value="male" name="gender_choice" required>
+            <label for="gender-male">MALE</label>
+            <input type="radio" value="female" name="gender_choice">
+            <label for="gender-female">FEMALE</label><br><br>/
+
+
+            <label for="timing_slot">TIMING SLOT</label><br>
+            <select name="TIMING_SLOT" required><br>
+                <option value="Default">(Please select a Timeslot)</option>
+                <option value="6-9 AM" name="time_choice">6-9 AM</option>
+                <option value="9-12 AM"  name="time_choice">9-12 AM</option>
+                <option value="1-4 PM" name="time_choice">1-4 PM</option>
+                <option value="5-8 PM" name="time_choice">5-8 PM</option>
+                </select><br><br>
+    
+        <label for="goal">GOAL</label><br>
+        <input type="radio" value="weight-loss" name="goal_choice" required>
+        <label for="goal-loss">WEIGHT-LOSS</label><br>
+        <input type="radio" value="weight-gain" name="goal_choice">
+        <label for="goal-gain">WEIGHT-GAIN</label><br>
+        <input type="radio" value="weight-mainteinance" name="goal_choice">
+        <label for="goal-maintain">WEIGHT-MAINTEINANCE</label><br><br>
+
+        <label for="desc">HEALTH ISSUES(Optional):</label><br>
+        <textarea name="desc" id="desc"></textarea><br>
+       <button type="submit"> REGISTER</button>
+			
+    </div>
+
+    <script>
+
+       
+			let popup=document.getElementById("popup");
+
+			function openPopup(){
+				popup.classList.add("open-popup");
+			}
+			function closePopup(){
+				popup.classList.remove("open-popup");
+			}
+	
+const email= document.getElementById('email');
+const username= document.getElementById('uname');
+const phno= document.getElementById('phno');
+const weight= document.getElementById('weight');
+const height= document.getElementById('height');
+
+var count=0;
+
+    function validateemail(){
+    const emailcheck=email.value;
+    const valid=/^([a-zA-Z0-9-_\.]+)@([a-zA-Z0-9]+)\.([a-zA-Z]{2,10})(\.[a-zA-Z]{2,8})?$/
+    if(emailcheck=="")
+    {
+        document.getElementById("small").innerHTML='Please enter your email id';
+       email.style.border = "2px solid red";
+    }
+   else if(!valid.test(emailcheck)){
+        document.getElementById("small").innerHTML='Please enter valid email id';
+       email.style.borderColor = "red"; 
+    }
+    else {
+       document.getElementById("small") .innerHTML='';
+      email.style.borderColor = "green";
+      return count++;
+    }
+}
+
+function validatename(){
+    //const test=/^[A-Z]{3,}$/;
+    const namecheck=username.value.trim;
+    if(namecheck==""){
+        document.getElementById("small1").innerHTML="Please enter username";
+        username.style.border="2px solid red";
+    }
+    else if(!validname(username)){
+       document.getElementById("small1").innerHTML='please enter correct username';
+        username.style.borderColor = "red";
+     }
+     else{
+         document.getElementById("small1").innerHTML='';
+          username.style.borderColor = "green";
+          return count++;
+     }
+ 
+}
+
+ function validatephoneno(){
+        const phnocheck=phno.value;
+        const dove=/^\d{10}$/;
+        if(phnocheck==""){
+        document.getElementById("small2").innerHTML="Please enter phone number";
+        phno.style.border="2px solid red";
+    }
+    else if(!dove.test(phnocheck)){
+       document.getElementById("small2").innerHTML='please enter correct phone number';
+        phno.style.borderColor = "red";
+     }
+   else{
+         document.getElementById("small2").innerHTML='';
+          phno.style.borderColor = "green";
+          return count++;
+     }
+
+ }
+
+ function validateweight(){
+      const weightcheck=weight.value;
+      
+      if(weightcheck==""){
+        document.getElementById("small3").innerHTML="Please enter weight";
+        weight.style.border="2px solid red";
+    }
+    else if(weightcheck<160){
+           document.getElementById("small3").innerHTML="";
+           weight.style.border="2px solid green";
+           return count++;
+    }
+    else if(weightcheck>160){
+           document.getElementById("small3").innerHTML="please enter correct weight";
+           weight.style.border="2px solid red";
+    }
+    else if(weightcheck!=(NaN)){
+           document.getElementById("small3").innerHTML="Please enter weight in number format";
+           weight.style.border="2px solid red";
+    }
+    else{
+        document.getElementById("small3").innerHTML="Please enter correct weight";
+        weight.style.borderColor = "red";
+
+    }
+
+ }
+
+ function validateheight(){
+      const heightcheck=height.value;
+      
+      if(heightcheck==""){
+        document.getElementById("small4").innerHTML="Please enter height";
+        height.style.border="2px solid red";
+    }
+    else if(heightcheck<180){
+           document.getElementById("small4").innerHTML="";
+           height.style.border="2px solid green";
+           return count++;
+           console.log(count);
+    }
+    else if(heightcheck>180){
+           document.getElementById("small4").innerHTML="please enter correct height";
+           height.style.border="2px solid red";
+    }
+    else if(heightcheck!=(NaN)){
+           document.getElementById("small3").innerHTML="Please enter height in number format";
+           weight.style.border="2px solid red";
+    }
+    else{
+        document.getElementById("small3").innerHTML="Please enter correct height";
+        weight.style.borderColor = "red";
+
+    }
+
+ }
+ function demo(){
+    if(count>=5){
+        return true;
+    }
+    else{
+        return false;
+    }
+ }
+ function validname(){
+    const name=username.value;
+        var num=name.length;
+       // console.log(num);
+        for(var i=0;i<num;i++){
+            var CharName=name.charCodeAt(i);
+            if((CharName>=65 && CharName<=90) || (CharName>=97 && CharName<=122))
+            {
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+    }
+    </script>
+    {{!-- <script>
+        
+        const form = document.getElementById('form');
+       const name = document.getElementById('uname');
+       const email = document.getElementById('email');
+       const phno = document.getElementById('phno');
+       const age = document.getElementById('age');
+        const weight = document.getElementById('weight');
+        const height = document.getElementById('height');
+
+
+        form.addEventListener('submit', e => {
+        e.preventDefault();
+        validateInputs();
+         });
+       
+         const setError = (element, message) => {
+         const inputControl = element.parentElement;
+         const errorDisplay = inputControl.querySelector('.error');
+         errorDisplay.innerText = message;
+         inputControl.classList.add('error');
+         inputControl.classList.remove('success')
+         }
+        
+          const setSuccess = element => {
+           const inputControl = element.parentElement;
+          const errorDisplay = inputControl.querySelector('.error');
+
+          errorDisplay.innerText = '';
+          inputControl.classList.add('success');
+          inputControl.classList.remove('error');
+          };
+
+            
+            const isValidEmail = email => {
+            const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(String(email).toLowerCase());
+            }
+
+    const validateInputs = () => {
+    const nameValue = uname.value.trim();
+    const emailValue = email.value.trim();
+    const phnoValue = phno.value.trim();
+    var ageValue = age.value.trim();
+    var age1=Number(ageValue);
+    const weightValue = weight.value.trim();
+    const heightValue = height.value.trim();
+
+
+    if(nameValue === '') {
+        setError(uname, 'Username is required');
+    } 
+    else if(!valueName()){
+        setError(uname, 'Name must be alphabets');
+    }
+    else {
+        setSuccess(uname);
+    }
+    function valueName(){
+        var num=nameValue.length;
+        console.log(num);
+        for(var i=0;i<num;i++){
+            var CharName=nameValue.charCodeAt(i);
+           // var CharDivya=Number(CharName);
+            //console.log(typeof(CharName));
+            console.log(CharName);
+            if((CharName>=65 && CharName<=90) || (CharName>=97 && CharName<=122))
+            {
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+    }
+   
+
+    if(emailValue === '') {
+        setError(email, 'Email is required');
+    } else if (!isValidEmail(emailValue)) {
+        setError(email, 'Provide a valid email address');
+    } else {
+        setSuccess(email);
+    }
+    
+
+    if(phnoValue === '') {
+        setError(phno, 'Ph.no is required');
+    }
+    else {
+        setSuccess(phno);
+    }
+    
+    if(ageValue === '') {
+        setError(age, 'Please enter your age');
+    } else if(age1==isNaN){
+        setError(age,'Enter correctly');
+    }
+    else {
+        setSuccess(age);
+    }
+
+    if(weightValue === '') {
+        setError(weight, 'Please enter your weight');
+    } 
+    else {
+        setSuccess(weight);
+    }
+
+    if(heightValue === '') {
+        setError(height, 'Please enter your height');
+    } else if(heightValue =='0-9'){
+        setError(height, 'Please enter height properly');
+    }
+    else {
+        setSuccess(height);
+    }
+}
+ </script> --}}
+</body>
+</html>
+

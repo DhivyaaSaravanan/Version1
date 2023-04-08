@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/NutriLogin.css">
+    <script src="https://kit.fontawesome.com/5e5d8f9e22.js" crossorigin="anonymous"></script>
+    <title>Login in</title>
+</head>
+<body>
+    <div class="container">
+         <form id="form" action="/auth/Nutrilogin" method="post">
+            <h1>Login Credentials</h1> 
+            {{#if msg}}
+        <p class="{{msg_type}}">{{msg}}</p>
+        {{/if}}        
+            <div class="input-control">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="text" placeholder="Enter email" >
+                <div class="error"></div>
+            </div>
+            <div class="input-control">
+                <label for="password">Password</label>
+                <input id="password"name="password" type="password"   placeholder="Enter password">
+                <div class="error"></div>
+            </div>
+            
+           <a href="/forgot" >Forgot password</a>
+       
+           <a href="/offer"></a> <button type="submit">Log in</button></a><br>
+            <pre class="align">
+                No account?
+                <a href="/createaccount">Create Account</a>
+            </pre>  
+        </form>
+    </div>
+</body>
+</html>
+
+ 

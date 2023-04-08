@@ -1,0 +1,36 @@
+*{
+    margin:0;
+    padding:0;
+    font-weight: 900;
+}
+body{
+    background-image: url("http://savonfoodssupermarket.com/wp-content/uploads/2017/06/Backgroud-img.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    font-family:sans-serif; 
+    justify-content: center;
+    align-items: center;
+}
+
+.full {
+    background-image: linear-gradient(to right, lightgreen, rgb(149, 149, 236));
+border-radius: 4px;
+font-size: 12px;
+box-shadow: 10px 20px 25px rgba(0,0,0,.3);
+width:400px;
+    display: flex;
+   justify-content: center;
+    align-items: center;
+    padding: 30px 40px;
+}
+button {
+    margin-top: 15px;
+    width: 80%;
+    background-color: #adff2f;
+    border-color:#adff2f ;
+    border-radius: 10px;
+    color: rgb(3, 3, 3);
+    padding: 10px;
+    text-transform: uppercase;
+}

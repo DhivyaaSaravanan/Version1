@@ -1,0 +1,43 @@
+body{
+    width: 600px;
+    height: auto;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+      
+    }
+
+.btn{
+ width:100px;
+ height: 40px;
+ background-color: #84c721;
+ color:white;
+ border-radius: 10px;
+}
+
+.popup{
+   width:400px;
+   background:#dc2743;
+   position:absolute;
+   border-radius: 10px;
+   /* visibility: hidden; */
+   top: 50%;
+   left:50%;
+   transform:translate(-50%,-50%) scale(1);
+   text-align: center;
+   padding:0 30px 30px;
+   color:#fff;
+   box-shadow: 0 3px 7px black;
+   transition: transform 0.4s,top 0.4s;
+}
+/* .open-popup{
+  top:50%;
+  transform:translate(-50%,-50%) scale(1);
+  visibility: visible;
+} */
+.popup img{
+  height:50px;
+  width:50px;
+}
+.popup button{
+  width:60%;
+  box-shadow: 0 2px 4px black;
+}
